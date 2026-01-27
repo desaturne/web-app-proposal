@@ -1,0 +1,21 @@
+# LaTeX intermediate files
+*.aux
+*.log
+
+# Additional common LaTeX build files
+*.toc
+*.out
+*.bbl
+*.blg
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+
+# LaTeX build directories
+_minted-*/
+build/
