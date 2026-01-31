@@ -1,6 +1,6 @@
 \chapter{System (or Project) Design and Architecture}
     \section{Use Case Diagram}
-    The Use Case Diagram of the prepared inference system.
+    The Use Case Diagram of the proposed system.
         \begin{figure}[h]
         \centering
             \includegraphics[width=0.5\textwidth]{img/finalusecase.png}
@@ -8,26 +8,82 @@
         \end{figure}
     \pagebreak
     \section{Context Diagram}
-    The Context Diagram shows the top level picture of the system.
+    The Context Diagram shows the top level picture of the proposed system.
     \begin{figure}[h]
             \centering
                 \includegraphics[width=1.0\textwidth]{img/contextdiagram.png}
-                \caption{Context Diagram of Inference System}    
+                \caption{Context Diagram of the Proposed System}    
             \end{figure}
         \section{Data Flow Diagram}
-    The Data Flow Diagram shows the flow of the data between the subsystem of the inference system. The Data flow Diagram of the inference system is shown below:
+    The Data Flow Diagram shows the flow of the data between the subsystems of the proposed system. The Data Flow Diagram is shown below:
             \begin{figure}[h]
             \centering
                 \includegraphics[width=1.0\textwidth]{img/dataflow.png}
-                \caption{Data Flow Diagram of Inference System}    
+                \caption{Data Flow Diagram of the Proposed System}    
             \end{figure}
     \pagebreak
     \section{Workflow Diagram}
-    The Sequence Diagram shows the flow of the process in between the subsystem. And the state when the subsystem are active and when the sub system are passive. The Sequence Diagram of the inference system is shown below:
-            \begin{figure}[h]
+    The Sequence Diagram shows the flow of the process in between the subsystems. And the state when the subsystems are active and when the subsystems are passive. The Sequence Diagram of the proposed system is shown below:
+            \begin{figure}[H]
             \centering
                 \includegraphics[width=1.0\textwidth]{img/sequence-diagram}
-                \caption{Sequence Diagram of Inference System}    
+                \caption{Sequence Diagram of the Proposed System}    
             \end{figure}
+    \pagebreak
+    \section{Entity Relationship Analysis}
+    The Entity-Relationship (ER) analysis defines the proposed data architecture of the system, identifying the primary objects and how they will interact to support the task and focus tracking workflow.
+
+    \subsection{Entity Classification}
+    Entities are classified based on their existential dependency within the system.
+
+    \begin{itemize}
+        \item \textbf{Strong Entities}: These entities possess independent existence and are identified by their own unique attributes.
+        \begin{itemize}
+            \item \textbf{USER}: Represents the primary actor; identified by \texttt{id}.
+            \item \textbf{TASK}: Represents the work unit created by a user; identified by \texttt{task\_id}.
+            \item \textbf{SCHEDULE}: Represents planned time allocations on a calendar; identified by \texttt{schedule\_id}.
+        \end{itemize}
+        \item \textbf{Weak Entities}: These entities are existence-dependent on a parent strong entity.
+        \begin{itemize}
+            \item \textbf{PROGRESS}: Dependent on \textbf{TASK}. It tracks the quantitative state of a task and cannot exist without a parent task record.
+            \item \textbf{FOCUS-SESSION}: Dependent on \textbf{TASK}. It logs specific execution instances and duration toward a task's completion.
+        \end{itemize}
+    \end{itemize}
+
+    \subsection{Relationships and Cardinality}
+    The following table defines the logic and constraints governing the interactions between the entities.
+
+    \begin{table}[h]
+    \centering
+    \adjustbox{max width=\textwidth}{
+    \begin{tabular}{|l|l|c|p{5.5cm}|}
+    \hline
+    \textbf{Entity A} & \textbf{Entity B} & \textbf{Cardinality} & \textbf{Description} \\ \hline
+    USER & TASK & $1:N$ & One user can manage multiple tasks. \\ \hline
+    TASK & FOCUS-SESSION & $1:N$ & A task can be composed of many work sessions. \\ \hline
+    TASK & SCHEDULE & $1:N$ & A single task can be scheduled for multiple time slots. \\ \hline
+    TASK & PROGRESS & $1:N$ & A task generates sequential progress records over time. \\ \hline
+    SCHEDULE & FOCUS-SESSION & $0:N$ & A session optionally fulfills a schedule (allows spontaneous sessions). \\ \hline
+    FOCUS-SESSION & PROGRESS & $1:1$ & Each completed session triggers a specific progress update. \\ \hline
+    \end{tabular}
+    }
+    \caption{Entity Relationship and Cardinality Table}
+    \end{table}
+
+    \subsection{Design Assumptions}
+    The proposed database architecture will be built upon the following logical assumptions:
+    \begin{enumerate}
+        \item \textbf{Spontaneous Execution}: The \texttt{schedule\_id} in the \texttt{FOCUS-SESSION} entity is nullable, assuming that users may perform work sessions without prior scheduling.
+        \item \textbf{Derived Progress}: The \texttt{percent\_complete} attribute is a derived value calculated using the formula:
+        \[ \text{percent\_complete} = \left( \frac{\text{Total Time Spent}}{\text{Estimated Minutes}} \right) \times 100 \]
+        \item \textbf{Atomic Tasks}: A \texttt{FOCUS-SESSION} can only be associated with one \texttt{TASK} at a time to ensure accurate focus tracking.
+        \item \textbf{Data Persistence}: Progress records are maintained as a history of the task's evolution rather than overwriting a single value, allowing for trend analysis.
+    \end{enumerate}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{img/erd1.png}
+        \caption{Entity Relationship Diagram}
+    \end{figure}
     \pagebreak
   

@@ -1,4 +1,4 @@
-\chapter{Block Diagram and Description of Prepared System}
+\chapter{Block Diagram and Description of Proposed System}
 
 \section{System Block Diagram}
 \begin{figure}[ht]
@@ -8,52 +8,52 @@
     \label{fig:System Block Diagram}
 \end{figure}
 
-The system block diagram represents the overall architecture of the \textit{StudyBug} web application and illustrates how different system modules interact to provide an integrated study-support platform. The system follows a client–server architecture and is accessed using a standard web browser.
+The system block diagram illustrates the proposed architecture of the \textit{StudyBug} web application and shows how different system modules will interact to provide an integrated study-support platform. The system is designed to follow a client–server architecture and will be accessed using a standard web browser.
 
-When a user opens the StudyBug website, the frontend interface loads in the browser and provides access to various study-support features. User actions such as task creation, study scheduling, and focus session initiation are sent from the frontend to the backend server through secure API requests. User authentication is handled through an external authentication service, which ensures secure access to personalized data. All study-related information is stored and managed in a centralized database. The processed data are then returned to the frontend and presented to the user in the form of schedules, progress summaries, and visual feedback.
+When a user opens the StudyBug website, the frontend interface will load in the browser and provide access to various study-support features. User actions such as task creation, study scheduling, and focus session initiation will be sent from the frontend to the backend server through secure API requests. User authentication will be handled through an external authentication service, ensuring secure access to personalized data. All study-related information will be stored and managed in a centralized database. The processed data will then be returned to the frontend and presented to the user in the form of schedules, progress summaries, and visual feedback.
 
 \section{Frontend Interface Module}
 
-The frontend interface module is responsible for user interaction and visual presentation. It is developed using modern web technologies and follows responsive design principles to support both desktop and mobile devices. The frontend provides interfaces for task management, study scheduling, focus timer execution, progress tracking, and aesthetic customization. Its primary role is to capture user input, display system output, and communicate with backend services.
+The frontend interface module will be responsible for user interaction and visual presentation. It will be developed using modern web technologies and will follow responsive design principles to support both desktop and mobile devices. The frontend will provide interfaces for task management, study scheduling, focus timer execution, progress tracking, and aesthetic customization. Its primary role will be to capture user input, display system output, and communicate with backend services.
 
 \section{Authentication Module}
 
-The authentication module manages user login and access control. It verifies user credentials and issues authentication tokens that allow secure communication between the frontend and backend. This module ensures that each user can access only their own study data while maintaining system security.
+The authentication module will manage user login and access control. It will verify user credentials and issue authentication tokens that allow secure communication between the frontend and backend. This module is designed to ensure that each user can access only their own study data while maintaining system security.
 
 \section{Backend Server Module}
 
-The backend server acts as the central control unit of the system. It receives requests from the frontend, processes application logic, and coordinates interactions between different modules. The backend manages task operations, scheduling logic, focus session handling, and progress computation. It also handles data validation and communicates with the database for data storage and retrieval.
+The backend server will act as the central control unit of the system. It will receive requests from the frontend, process application logic, and coordinate interactions between different modules. The backend will manage task operations, scheduling logic, focus session handling, and progress computation. It will also handle data validation and communicate with the database for data storage and retrieval.
 
 \section{Task Management Module}
 
-The task management module enables users to create, update, delete, and mark study tasks as completed. Each task represents a specific academic activity such as assignments, revision topics, or project milestones. Task-related requests are processed by the backend server and stored persistently in the database, allowing users to access their tasks across sessions and devices.
+The task management module will enable users to create, update, delete, and mark study tasks as completed. Each task will represent a specific academic activity such as assignments, revision topics, or project milestones. Task-related requests will be processed by the backend server and stored persistently in the database, allowing users to access their tasks across sessions and devices.
 
 \section{Study Scheduling Module}
 
-The study scheduling module allows users to plan daily or weekly study routines by assigning time slots to specific tasks or subjects. This module retrieves task information from the database and organizes it into structured schedules. The generated schedules are then sent to the frontend for visualization, helping users manage time effectively.
+The study scheduling module will allow users to plan daily or weekly study routines by assigning time slots to specific tasks or subjects. This module will retrieve task information from the database and organize it into structured schedules. The generated schedules will then be sent to the frontend for visualization, helping users manage time effectively.
 
 \section{Focus Timer Module}
 
-The focus timer module supports structured study sessions inspired by time-management techniques such as the Pomodoro method. Users can start, pause, and reset focus sessions through the frontend interface. The backend records focus session data, which contributes to overall progress tracking and study analysis.
+The focus timer module will support structured study sessions inspired by time-management techniques such as the Pomodoro method. Users will be able to start, pause, and reset focus sessions through the frontend interface. The backend will record focus session data, which will contribute to overall progress tracking and study analysis.
 
 \section{Progress Tracking Module}
 
-The progress tracking module analyzes completed tasks and recorded focus sessions to generate basic progress summaries. These summaries help users monitor their study consistency and productivity over time. Progress data is calculated by the backend and stored in the database for future reference.
+The progress tracking module will analyze completed tasks and recorded focus sessions to generate basic progress summaries. These summaries will help users monitor their study consistency and productivity over time. Progress data will be calculated by the backend and stored in the database for future reference.
 
 \section{Database Module}
 
-The database module is responsible for persistent data storage. It stores user accounts, tasks, study schedules, focus session logs, and related metadata. A centralized database ensures data consistency, reliability, and accessibility across multiple user sessions and devices.
+The database module will be responsible for persistent data storage. It will store user accounts, tasks, study schedules, focus session logs, and related metadata. A centralized database will ensure data consistency, reliability, and accessibility across multiple user sessions and devices.
 
 \section{System Workflow}
 
-The overall system workflow begins when the user accesses the StudyBug website through a web browser. After authentication, the user interacts with the frontend to manage tasks, plan schedules, or initiate focus sessions. The frontend sends these requests to the backend server, which processes the logic and updates the database accordingly. The updated information is then returned to the frontend and displayed to the user, completing the interaction cycle.
+The overall system workflow will begin when the user accesses the StudyBug website through a web browser. After authentication, the user will interact with the frontend to manage tasks, plan schedules, or initiate focus sessions. The frontend will send these requests to the backend server, which will process the logic and update the database accordingly. The updated information will then be returned to the frontend and displayed to the user, completing the interaction cycle.
 
-\section{Advantages of the Prepared System}
+\section{Advantages of the Proposed System}
 
 \begin{itemize}
-    \item Provides a centralized and secure platform for study planning and tracking
-    \item Ensures persistent data storage through a backend database
-    \item Supports access across multiple devices and sessions
-    \item Encourages structured study habits using scheduling and focus timers
-    \item Offers a clean and distraction-minimized study environment
+    \item Will provide a centralized and secure platform for study planning and tracking
+    \item Will ensure persistent data storage through a backend database
+    \item Will support access across multiple devices and sessions
+    \item Will encourage structured study habits using scheduling and focus timers
+    \item Will offer a clean and distraction-minimized study environment
 \end{itemize}
