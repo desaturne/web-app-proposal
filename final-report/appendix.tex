@@ -11,13 +11,13 @@
 
 The following figures provide additional screenshots of the StudyBug interface beyond those presented in Chapter 8.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.9\textwidth]{img/imagin.png}
     \caption{StudyBug Dashboard Showing XP, Streaks, and Learning Progress}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.9\textwidth]{img/studyr.png}
     \caption{Virtual Study Room with Interactive Hotspots}
@@ -29,7 +29,7 @@ The following figures provide additional screenshots of the StudyBug interface b
 
 The following tables define the structure of each database table used in StudyBug. All tables include a \texttt{user\_id} foreign key for data isolation.
 
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
@@ -48,7 +48,7 @@ created\_at & TIMESTAMP & Account creation timestamp \\
 \caption{users Table Schema}
 \end{table}
 
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
@@ -70,9 +70,9 @@ created\_at & TIMESTAMP & Task creation timestamp \\
 \caption{tasks Table Schema}
 \end{table}
 
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|l|l|p{5.5cm}|}
 \hline
 \textbf{Column} & \textbf{Type} & \textbf{Description} \\
 \hline
@@ -81,7 +81,7 @@ user\_id & UUID (FK) & Reference to user \\
 task\_id & INTEGER (FK) & Associated task \\
 duration\_minutes & INTEGER & Planned session duration \\
 actual\_duration & INTEGER & Actual time spent (seconds) \\
-status & VARCHAR & Session state (IN\_PROGRESS/COMPLETED/CANCELLED) \\
+status & VARCHAR & Session state: IN\_PROGRESS, COMPLETED, or CANCELLED \\
 started\_at & TIMESTAMP & Session start time \\
 ended\_at & TIMESTAMP & Session end time \\
 \hline
@@ -89,7 +89,7 @@ ended\_at & TIMESTAMP & Session end time \\
 \caption{focus\_sessions Table Schema}
 \end{table}
 
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
@@ -108,7 +108,7 @@ updated\_at & TIMESTAMP & Last update timestamp \\
 \caption{notes Table Schema}
 \end{table}
 
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
@@ -125,8 +125,6 @@ created\_at & TIMESTAMP & Entry creation timestamp \\
 \end{tabular}
 \caption{journal\_entries Table Schema}
 \end{table}
-
-\pagebreak
 
 \subsection*{Appendix C: Complete API Endpoint Reference}
 
@@ -202,7 +200,7 @@ DELETE & /api/trash/empty & Empty all trash items \\
 
 StudyBug implements a three-phase learning progression system with 15 levels to maintain long-term user engagement.
 
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \begin{tabular}{|l|c|l|c|}
 \hline
@@ -238,24 +236,3 @@ XP is awarded through the following actions:
     \item Daily login streak bonus: \textbf{+5 XP} per day
 \end{itemize}
 
-\subsection*{Appendix E: Team Contributions}
-
-The following table summarizes the primary responsibilities of each team member during the development of StudyBug.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|l|p{7cm}|}
-\hline
-\textbf{Member} & \textbf{Roll No.} & \textbf{Primary Contributions} \\
-\hline
-Anjana Silinchhe Shrestha & KCE080BCT004 & Frontend UI development, StudyRoom interactive hotspots, Calendar module, overall UI/UX design \\
-\hline
-Pradipta Joshi & KCE080BCT021 & Backend API development, authentication integration, database schema design \\
-\hline
-Prasant Rai & KCE080BCT024 & Pomodoro timer implementation, focus session tracking, export functionality (CSV/PDF) \\
-\hline
-Sushma Shrestha & KCE080BCT043 & Quiz generation system, notes and journal modules, gamification (XP, streaks, levels) \\
-\hline
-\end{tabular}
-\caption{Team Member Contributions}
-\end{table}

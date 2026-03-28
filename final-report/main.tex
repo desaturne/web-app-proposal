@@ -11,6 +11,10 @@
 \usepackage{url}
 \usepackage{longtable}
 \usepackage{booktabs}
+\usepackage{needspace}
+\usepackage{etoolbox}
+\preto{\section}{\needspace{10\baselineskip}}
+\preto{\subsection}{\needspace{8\baselineskip}}
 \DeclareUnicodeCharacter{202F}{\,}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 \begin{document}

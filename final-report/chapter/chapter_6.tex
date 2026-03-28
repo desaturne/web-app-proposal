@@ -10,7 +10,7 @@
 
     \section{Use Case Diagram}
     The Use Case Diagram shows the interactions between the student (primary user) and the system functionalities.
-        \begin{figure}[h]
+        \begin{figure}[htbp]
         \centering
             \includegraphics[width=0.5\textwidth]{img/finalusecase.png}
             \caption{Use Case Diagram of StudyBug}
@@ -28,10 +28,9 @@
         \item Export Reports
     \end{itemize}
 
-    \pagebreak
     \section{Context Diagram}
     The Context Diagram shows the top level view of the StudyBug system and its interaction with external entities.
-    \begin{figure}[h]
+    \begin{figure}[htbp]
             \centering
                 \includegraphics[width=1.0\textwidth]{img/contextdiagram.png}
                 \caption{Context Diagram of StudyBug}
@@ -39,24 +38,22 @@
 
     \section{Data Flow Diagram}
     The Data Flow Diagram shows the flow of data between the subsystems of StudyBug.
-            \begin{figure}[h]
+            \begin{figure}[htbp]
             \centering
                 \includegraphics[width=1.0\textwidth]{img/dataflow.png}
                 \caption{Data Flow Diagram of StudyBug}
             \end{figure}
 
-    \pagebreak
     \section{Sequence Diagram}
     The Sequence Diagram illustrates the flow of a typical focus session workflow.
-            \begin{figure}[H]
+            \begin{figure}[htbp]
             \centering
                 \includegraphics[width=1.0\textwidth]{img/sequence-diagram}
                 \caption{Sequence Diagram - Focus Session Workflow}
             \end{figure}
 
-    \pagebreak
     \section{System Block Diagram}
-    \begin{figure}[ht]
+    \begin{figure}[htbp]
         \centering
         \includegraphics[width=0.9\textwidth]{img/System-Block-Diagram.png}
         \caption{System Block Diagram of StudyBug}
@@ -97,7 +94,6 @@
         \item progress, trash, schedules
     \end{itemize}
 
-    \pagebreak
     \section{Entity Relationship Analysis}
     The Entity-Relationship analysis defines the data architecture of StudyBug.
 
@@ -121,10 +117,9 @@
     \end{itemize}
 
     \subsection{Relationships and Cardinality}
-    \begin{table}[h]
+    \begin{table}[H]
     \centering
-    \adjustbox{max width=\textwidth}{
-    \begin{tabular}{|l|l|c|p{5.5cm}|}
+    \begin{tabular}{|p{3cm}|p{3.2cm}|c|p{5cm}|}
     \hline
     \textbf{Entity A} & \textbf{Entity B} & \textbf{Cardinality} & \textbf{Description} \\ \hline
     USER & TASK & $1:N$ & One user can manage multiple tasks \\ \hline
@@ -137,17 +132,16 @@
     USER & LEARNING\_SECTION & $1:N$ & One user has multiple learning sections \\ \hline
     LEARNING\_SECTION & LEARNING\_LEVEL & $1:N$ & Each section has multiple levels \\ \hline
     \end{tabular}
-    }
     \caption{Entity Relationship and Cardinality Table}
     \end{table}
 
-    \begin{figure}[H]
+    \begin{figure}[htbp]
         \centering
         \includegraphics[width=0.9\textwidth]{img/erd2.jpeg}
         \caption{ER Diagram of StudyBug}
     \end{figure}
 
-    \begin{figure}[H]
+    \begin{figure}[htbp]
         \centering
         \includegraphics[width=0.9\textwidth]{img/erd1.png}
         \caption{Detailed Entity Relationship Diagram}
@@ -156,9 +150,9 @@
     \section{API Architecture}
     The backend exposes RESTful API endpoints organized by resource:
 
-    \begin{table}[h]
+    \begin{table}[H]
     \centering
-    \begin{tabular}{|l|l|l|}
+    \begin{tabular}{|p{3.5cm}|p{4cm}|p{5.5cm}|}
     \hline
     \textbf{Route} & \textbf{Methods} & \textbf{Purpose} \\
     \hline
