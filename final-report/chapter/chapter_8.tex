@@ -1,0 +1,243 @@
+\chapter{Testing and Results}
+
+\section{Testing Methodology}
+The StudyBug application underwent comprehensive testing throughout the development cycle using multiple approaches:
+
+\begin{itemize}
+    \item \textbf{Unit Testing}: Individual component and function testing
+    \item \textbf{Integration Testing}: API endpoint and database interaction testing
+    \item \textbf{User Acceptance Testing}: End-to-end feature verification
+    \item \textbf{Code Review}: Peer review through pull requests with GitHub Copilot assistance
+\end{itemize}
+
+\section{Test Cases and Results}
+
+\subsection{Authentication Module Testing}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{5cm}|c|c|}
+\hline
+\textbf{Test ID} & \textbf{Test Case} & \textbf{Expected} & \textbf{Result} \\
+\hline
+AUTH-01 & User registration with valid credentials & Success & Pass \\
+AUTH-02 & User registration with existing email & Error message & Pass \\
+AUTH-03 & User login with valid credentials & JWT token & Pass \\
+AUTH-04 & User login with invalid password & Error message & Pass \\
+AUTH-05 & Session persistence after refresh & Session maintained & Pass \\
+AUTH-06 & Logout functionality & Session cleared & Pass \\
+AUTH-07 & Token expiry handling & Auto logout & Pass \\
+\hline
+\end{tabular}
+\caption{Authentication Module Test Results}
+\end{table}
+
+\subsection{Task Management Testing}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{5cm}|c|c|}
+\hline
+\textbf{Test ID} & \textbf{Test Case} & \textbf{Expected} & \textbf{Result} \\
+\hline
+TASK-01 & Create task with all fields & Task created & Pass \\
+TASK-02 & Create task with minimum fields & Task created & Pass \\
+TASK-03 & Update task details & Task updated & Pass \\
+TASK-04 & Mark task as complete & Status changed & Pass \\
+TASK-05 & Delete task (soft delete) & Moved to trash & Pass \\
+TASK-06 & Task appears on calendar & Sync working & Pass \\
+TASK-07 & Priority color coding & Correct colors & Pass \\
+TASK-08 & User data isolation & Own tasks only & Pass \\
+\hline
+\end{tabular}
+\caption{Task Management Test Results}
+\end{table}
+
+\subsection{Pomodoro Timer Testing}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{5cm}|c|c|}
+\hline
+\textbf{Test ID} & \textbf{Test Case} & \textbf{Expected} & \textbf{Result} \\
+\hline
+POMO-01 & Start focus session & Timer starts & Pass \\
+POMO-02 & Pause session & Timer pauses & Pass \\
+POMO-03 & Resume session & Timer continues & Pass \\
+POMO-04 & Complete session & Break prompt & Pass \\
+POMO-05 & Cancel session early & Session cancelled & Pass \\
+POMO-06 & Task progress update & Percentage updated & Pass \\
+POMO-07 & Session history recorded & Entry created & Pass \\
+POMO-08 & Break timer functionality & Break countdown & Pass \\
+\hline
+\end{tabular}
+\caption{Pomodoro Timer Test Results}
+\end{table}
+
+\subsection{Quiz Generation Testing}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{5cm}|c|c|}
+\hline
+\textbf{Test ID} & \textbf{Test Case} & \textbf{Expected} & \textbf{Result} \\
+\hline
+QUIZ-01 & Generate quiz from PDF & 5 MCQs generated & Pass \\
+QUIZ-02 & Generate quiz from TXT & 5 MCQs generated & Pass \\
+QUIZ-03 & Default quiz (no file) & Default questions & Pass \\
+QUIZ-04 & Answer submission & Score calculated & Pass \\
+QUIZ-05 & XP awarded on completion & XP increased & Pass \\
+QUIZ-06 & Level progression & Level unlocked & Pass \\
+\hline
+\end{tabular}
+\caption{Quiz Generation Test Results}
+\end{table}
+
+\subsection{Calendar Testing}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{5cm}|c|c|}
+\hline
+\textbf{Test ID} & \textbf{Test Case} & \textbf{Expected} & \textbf{Result} \\
+\hline
+CAL-01 & Create single-day event & Event created & Pass \\
+CAL-02 & Create multi-day event & Spans correctly & Pass \\
+CAL-03 & Event type color coding & Correct colors & Pass \\
+CAL-04 & Drag and drop reschedule & Date updated & Pass \\
+CAL-05 & Task sync on calendar & Tasks visible & Pass \\
+CAL-06 & Delete event & Event removed & Pass \\
+\hline
+\end{tabular}
+\caption{Calendar Test Results}
+\end{table}
+
+\subsection{Notes and Journal Testing}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{5cm}|c|c|}
+\hline
+\textbf{Test ID} & \textbf{Test Case} & \textbf{Expected} & \textbf{Result} \\
+\hline
+NOTE-01 & Create note & Note saved & Pass \\
+NOTE-02 & Add images to note (max 5) & Images stored & Pass \\
+NOTE-03 & Search notes & Results returned & Pass \\
+NOTE-04 & Delete note & Moved to trash & Pass \\
+JOUR-01 & Create journal entry & Entry saved & Pass \\
+JOUR-02 & One entry per day limit & Error on duplicate & Pass \\
+JOUR-03 & Mood selection & Mood recorded & Pass \\
+JOUR-04 & Word count tracking & Count displayed & Pass \\
+\hline
+\end{tabular}
+\caption{Notes and Journal Test Results}
+\end{table}
+
+\section{Issues Encountered and Resolutions}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{4cm}|p{5cm}|}
+\hline
+\textbf{Week} & \textbf{Issue} & \textbf{Resolution} \\
+\hline
+Week 3 & Users could see other users' data & Implemented user\_id filtering in all API queries \\
+\hline
+Week 4 & Calendar tasks shifted dates & Fixed sync logic to keep events static \\
+\hline
+Week 4 & Copilot review caused errors & Reverted and re-applied changes carefully \\
+\hline
+Week 5 & Pomodoro timer bugs & Complete rewrite of timer logic \\
+\hline
+Week 6 & Bookshelf not visible & Fixed component visibility in StudyRoom \\
+\hline
+Week 6 & Session completion double-fire & Added atomic claim flag using React refs \\
+\hline
+Week 7 & Export button not working & Fixed button handler logic \\
+\hline
+Week 7 & Productivity calculation incomplete & Added quiz and focus time to calculation \\
+\hline
+Week 8 & Auto-logout issues & Improved session expiry validation \\
+\hline
+\end{tabular}
+\caption{Issues and Resolutions Log}
+\end{table}
+
+\section{Project Outcomes}
+
+\subsection{Functional Outcomes}
+All planned features were successfully implemented:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Feature} & \textbf{Status} \\
+\hline
+User Authentication (Supabase) & Complete \\
+Dashboard with 3-phase progress tracker & Complete \\
+Pomodoro Timer with break management & Complete \\
+Task Management with priority levels & Complete \\
+Calendar with multi-day events & Complete \\
+Notes with image support & Complete \\
+Journal with mood tracking & Complete \\
+File Management & Complete \\
+Quiz Generation from PDF/TXT & Complete \\
+Focus Timeline Analytics & Complete \\
+Trash System with recovery & Complete \\
+Export Reports (CSV/PDF) & Complete \\
+Spotify Integration & Complete \\
+\hline
+\end{tabular}
+\caption{Feature Implementation Status}
+\end{table}
+
+\subsection{Measurable Metrics}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Metric} & \textbf{Target} & \textbf{Achieved} \\
+\hline
+Core Features & 10+ & 13 \\
+API Endpoints & 30+ & 35+ \\
+Database Tables & 10+ & 12 \\
+User Authentication & Secure & Supabase JWT \\
+Code Organization & Modular & Frontend/Backend separation \\
+Documentation & Basic & Comprehensive \\
+\hline
+\end{tabular}
+\caption{Project Metrics - Target vs Achieved}
+\end{table}
+
+\section{Screenshots of Implemented System}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/imagin.png}
+    \caption{StudyBug Dashboard - Main Interface}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.77\textwidth]{img/log.png}
+    \caption{Login Interface}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.77\textwidth]{img/studyr.png}
+    \caption{Virtual Study Room with Interactive Hotspots}
+\end{figure}
+
+\section{Performance Results}
+The application met all non-functional performance requirements:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Metric} & \textbf{Target} & \textbf{Actual} \\
+\hline
+Page Load Time & < 3 seconds & ~2 seconds \\
+API Response Time & < 500ms & ~200ms average \\
+Time to Interactive & < 5 seconds & ~3 seconds \\
+Database Query Time & < 100ms & ~50ms average \\
+\hline
+\end{tabular}
+\caption{Performance Test Results}
+\end{table}

@@ -1,0 +1,228 @@
+\chapter{Implementation and Development}
+
+\section{Technology Stack Implementation}
+
+\subsection{Frontend Implementation}
+The frontend was developed using React 19, providing a modern Single Page Application experience:
+
+\begin{itemize}
+    \item \textbf{React 19}: Latest version with improved performance and concurrent rendering
+    \item \textbf{React Router DOM 7}: Client-side routing for seamless navigation
+    \item \textbf{Supabase JS Client}: Authentication handling on the frontend
+    \item \textbf{Custom CSS}: Aesthetic styling for the virtual study environment
+\end{itemize}
+
+Key frontend components implemented:
+\begin{itemize}
+    \item \texttt{App.js} - Root component with routing configuration
+    \item \texttt{Dashboard.jsx} - Learning progress tracker with gamification
+    \item \texttt{StudyRoom.jsx} - Virtual study environment with hotspots
+    \item \texttt{Calendar.jsx} - Monthly calendar with event management
+    \item \texttt{Notes.jsx} - Notes management with image support
+    \item \texttt{Journal.jsx} - Daily journal with mood tracking
+    \item \texttt{PomodoroTimer.jsx} - Focus timer with break management
+    \item \texttt{QuizModal.jsx} - Quiz interface for self-assessment
+\end{itemize}
+
+\subsection{Backend Implementation}
+The backend was built using Node.js with Express.js framework:
+
+\begin{itemize}
+    \item \textbf{Express.js 4.18}: RESTful API framework
+    \item \textbf{pg (node-postgres)}: PostgreSQL database client
+    \item \textbf{Supabase}: Authentication service integration
+    \item \textbf{pdfjs-dist}: PDF parsing for quiz generation
+    \item \textbf{Helmet}: Security middleware
+    \item \textbf{Morgan}: Request logging
+    \item \textbf{CORS}: Cross-origin resource sharing
+\end{itemize}
+
+Backend route modules implemented:
+\begin{itemize}
+    \item \texttt{auth.js} - Authentication endpoints
+    \item \texttt{tasks.js} - Task CRUD operations
+    \item \texttt{notes.js} - Notes management
+    \item \texttt{journal.js} - Journal entries
+    \item \texttt{calendar.js} - Calendar events
+    \item \texttt{files.js} - File upload/management
+    \item \texttt{focus-sessions.js} - Pomodoro session tracking
+    \item \texttt{progress.js} - Learning progress and XP
+    \item \texttt{quiz.js} - Quiz generation from documents
+    \item \texttt{trash.js} - Soft delete management
+\end{itemize}
+
+\subsection{Database Implementation}
+PostgreSQL database with 12 tables:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{8cm}|}
+\hline
+\textbf{Table} & \textbf{Purpose} \\
+\hline
+users & User profiles, XP, streaks, last activity \\
+tasks & Task items with priority, status, progress \\
+notes & Quick notes with optional images \\
+journal\_entries & Daily journal with mood tracking \\
+calendar\_events & Events with multi-day support \\
+files & Uploaded documents for quiz generation \\
+focus\_sessions & Pomodoro session records \\
+learning\_sections & 3 learning phases \\
+learning\_levels & 15 levels (5 per phase) \\
+progress & User progress tracking \\
+trash & Soft-deleted items for recovery \\
+schedules & Time slot allocations \\
+\hline
+\end{tabular}
+\caption{Database Tables Implemented}
+\end{table}
+
+\section{Core Features Implementation}
+
+\subsection{Dashboard and Learning Progress}
+The dashboard implements a gamification system with:
+\begin{itemize}
+    \item \textbf{3 Phases}: Foundations \& Basics, Building Momentum, Peak Mastery
+    \item \textbf{15 Levels}: 5 levels per phase with progressive unlocking
+    \item \textbf{XP System}: Points earned from completing quizzes and tasks
+    \item \textbf{Streak Tracking}: Consecutive days of activity
+    \item \textbf{Productivity Score}: Calculated from completed activities
+\end{itemize}
+
+\subsection{Virtual Study Room}
+The Study Room provides an immersive environment with:
+\begin{itemize}
+    \item Video background for ambient atmosphere
+    \item Interactive hotspots for:
+    \begin{itemize}
+        \item Calendar access
+        \item Todo list
+        \item Bookshelf (file management)
+        \item Spotify integration
+        \item Trash management
+    \end{itemize}
+    \item Pomodoro timer integration
+    \item Focus mode with distraction-minimized view
+\end{itemize}
+
+\subsection{Pomodoro Timer Implementation}
+The focus timer includes:
+\begin{itemize}
+    \item Configurable session duration (default 25 minutes)
+    \item Start, pause, and resume functionality
+    \item Automatic break reminders (5 minutes)
+    \item Task association for progress tracking
+    \item Session history and analytics
+\end{itemize}
+
+Session lifecycle states:
+\begin{enumerate}
+    \item \texttt{START} - Session initialized
+    \item \texttt{IN\_PROGRESS} - Timer running
+    \item \texttt{PAUSED} - Timer temporarily stopped
+    \item \texttt{COMPLETED} - Session finished successfully
+    \item \texttt{CANCELLED} - Session ended early
+\end{enumerate}
+
+\subsection{Quiz Generation System}
+The quiz module implements automatic question generation:
+
+\textbf{Algorithm Steps:}
+\begin{enumerate}
+    \item Extract text from uploaded PDF/TXT file using pdf.js
+    \item Split text into sentences (minimum 45 characters)
+    \item Build word frequency map excluding stop words
+    \item Identify key terms from each sentence
+    \item Create fill-in-the-blank questions
+    \item Generate distractors from top frequent words
+    \item Return 5 MCQs with shuffled options
+\end{enumerate}
+
+\subsection{Calendar System}
+The calendar implements:
+\begin{itemize}
+    \item Monthly grid view
+    \item Event types: Reminder, Exam, Deadline, Study Session, Other
+    \item Color coding by event type
+    \item Multi-day event spanning
+    \item Drag-and-drop rescheduling
+    \item Task synchronization (tasks appear on target dates)
+    \item Side panel for quick access
+\end{itemize}
+
+\subsection{Notes Module}
+Notes implementation features:
+\begin{itemize}
+    \item Rich text content storage
+    \item Image support (up to 5 images per note)
+    \item Search functionality
+    \item Random pastel color coding
+    \item Soft delete with trash recovery
+\end{itemize}
+
+\subsection{Journal Module}
+Daily journal features:
+\begin{itemize}
+    \item One entry per day constraint
+    \item 8 mood options (Happy, Excited, Sad, Tired, Thinking, Cool, Party, Peaceful)
+    \item Automatic word count
+    \item Calendar-based entry navigation
+\end{itemize}
+
+\subsection{Focus Timeline Analytics}
+Analytics views implemented:
+\begin{itemize}
+    \item \textbf{Daily View}: Hourly breakdown of focus sessions
+    \item \textbf{Weekly View}: Week-by-week summary
+    \item \textbf{Monthly View}: Calendar heat map visualization
+    \item Statistics: Total focus time, sessions completed, productivity metrics
+\end{itemize}
+
+\subsection{Export Functionality}
+Report export capabilities:
+\begin{itemize}
+    \item \textbf{CSV Export}: Tabular data for spreadsheet analysis
+    \item \textbf{PDF Export}: Formatted reports for documentation
+    \item Data includes: Tasks, focus sessions, progress metrics
+\end{itemize}
+
+\section{Data Synchronization}
+The system maintains real-time synchronization using custom events:
+
+\begin{itemize}
+    \item \texttt{studybug:tasks-updated} - Task changes
+    \item \texttt{studybug:calendar-updated} - Calendar modifications
+    \item \texttt{studybug:focus-completed} - Session completion
+\end{itemize}
+
+Components listen for these events and refresh their data automatically, ensuring consistency across the Calendar, Todo, Pomodoro, and Dashboard views.
+
+\section{Security Implementation}
+\begin{itemize}
+    \item JWT-based authentication with Supabase
+    \item User data isolation (users can only access their own data)
+    \item Parameterized SQL queries to prevent injection
+    \item Helmet middleware for security headers
+    \item Input validation on all API endpoints
+    \item Session expiry validation
+\end{itemize}
+
+\section{Development Statistics}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Metric} & \textbf{Value} \\
+\hline
+Total Files Created & 100+ \\
+Frontend Components & 20+ \\
+API Endpoints & 35+ \\
+Database Tables & 12 \\
+CSS Files & 15+ \\
+Total Commits & 52 \\
+Pull Requests Merged & 13 \\
+\hline
+\end{tabular}
+\caption{Development Statistics}
+\end{table}

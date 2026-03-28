@@ -1,0 +1,278 @@
+      \chapter{Requirement Analysis}
+
+        \section{Hardware Requirements}
+
+        \subsection{Development Environment}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Component} & \textbf{Minimum} & \textbf{Recommended} \\
+        \hline
+        Processor & Intel i3 / AMD Ryzen 3 & Intel i5+ / AMD Ryzen 5+ \\
+        RAM & 8 GB & 16 GB \\
+        Storage & 20 GB free & 50 GB+ SSD \\
+        Display & 1366 x 768 & 1920 x 1080+ \\
+        Internet & 5 Mbps & 25 Mbps+ \\
+        \hline
+        \end{tabular}
+        \caption{Development Environment Hardware Requirements}
+        \end{table}
+
+        \subsection{Server/Hosting Requirements}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Component} & \textbf{Minimum} & \textbf{Notes} \\
+        \hline
+        Node.js Runtime & v16+ & v18+ recommended \\
+        Memory & 512 MB & For Express server \\
+        Storage & 1 GB & For file uploads \\
+        Database & Managed (Supabase) & Free tier: 500 MB \\
+        \hline
+        \end{tabular}
+        \caption{Server/Hosting Hardware Requirements}
+        \end{table}
+
+        \subsection{Client Requirements}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|}
+        \hline
+        \textbf{Component} & \textbf{Requirement} \\
+        \hline
+        Browser & Chrome 90+, Firefox 88+, Safari 14+, Edge 90+ \\
+        JavaScript & Enabled \\
+        Cookies & Enabled (for session management) \\
+        Screen & Desktop and tablet supported \\
+        \hline
+        \end{tabular}
+        \caption{Client Hardware Requirements}
+        \end{table}
+
+        \section{Software Requirements}
+
+        \subsection{Frontend Software Stack}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Software} & \textbf{Version} & \textbf{Purpose} \\
+        \hline
+        React & 19.x & UI Framework \\
+        React DOM & 19.x & React rendering for web \\
+        React Router DOM & 7.x & Client-side routing \\
+        Supabase JS & 2.39+ & Authentication client \\
+        React Scripts & 5.x & Build tooling (CRA) \\
+        \hline
+        \end{tabular}
+        \caption{Frontend Software Stack}
+        \end{table}
+
+        \subsection{Backend Software Stack}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Software} & \textbf{Version} & \textbf{Purpose} \\
+        \hline
+        Node.js & 16+ & Runtime environment \\
+        Express.js & 4.18.x & Web framework \\
+        PostgreSQL & 14+ & Primary database \\
+        pg (node-postgres) & 8.x & PostgreSQL client \\
+        Supabase JS & 2.39+ & Auth service integration \\
+        pdf.js (pdfjs-dist) & 3.x & PDF parsing \\
+        JWT & 9.x & Token handling \\
+        Helmet & 7.x & Security headers \\
+        Morgan & 1.x & Request logging \\
+        CORS & 2.x & Cross-origin support \\
+        dotenv & 16.x & Environment variables \\
+        \hline
+        \end{tabular}
+        \caption{Backend Software Stack}
+        \end{table}
+
+        \section{Functional Requirements}
+
+        \subsection{FR-1: User Authentication}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|p{7cm}|c|c|}
+        \hline
+        \textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} \\
+        \hline
+        FR-1.1 & Users shall be able to register with email and password & High & Complete \\
+        FR-1.2 & Users shall be able to login with registered credentials & High & Complete \\
+        FR-1.3 & Users shall be able to logout from the application & High & Complete \\
+        FR-1.4 & Sessions shall persist across browser refreshes & High & Complete \\
+        FR-1.5 & Sessions shall expire after token validity period & Medium & Complete \\
+        FR-1.6 & Users shall be able to update their profile & Medium & Complete \\
+        \hline
+        \end{tabular}
+        \caption{User Authentication Requirements}
+        \end{table}
+
+        \subsection{FR-2: Task Management}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|p{7cm}|c|c|}
+        \hline
+        \textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} \\
+        \hline
+        FR-2.1 & Users shall create tasks with title, description, priority & High & Complete \\
+        FR-2.2 & Users shall set target dates for tasks & High & Complete \\
+        FR-2.3 & Users shall update task details & High & Complete \\
+        FR-2.4 & Users shall mark tasks as complete & High & Complete \\
+        FR-2.5 & Users shall delete tasks & High & Complete \\
+        FR-2.6 & Tasks shall sync with calendar view & Medium & Complete \\
+        FR-2.7 & Users shall set estimated pomodoros & Medium & Complete \\
+        FR-2.8 & Task progress shall update during focus sessions & Medium & Complete \\
+        \hline
+        \end{tabular}
+        \caption{Task Management Requirements}
+        \end{table}
+
+        \subsection{FR-3: Focus Sessions (Pomodoro)}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|p{7cm}|c|c|}
+        \hline
+        \textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} \\
+        \hline
+        FR-3.1 & Users shall start focus sessions with configurable duration & High & Complete \\
+        FR-3.2 & System shall track focus session duration & High & Complete \\
+        FR-3.3 & Users shall pause and resume sessions & Medium & Complete \\
+        FR-3.4 & Users shall end sessions early & Medium & Complete \\
+        FR-3.5 & System shall provide break reminders after sessions & Medium & Complete \\
+        FR-3.6 & Sessions shall be associated with specific tasks & Medium & Complete \\
+        FR-3.7 & Session history shall be viewable & Medium & Complete \\
+        \hline
+        \end{tabular}
+        \caption{Focus Sessions Requirements}
+        \end{table}
+
+        \subsection{FR-4: Calendar Management}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|p{7cm}|c|c|}
+        \hline
+        \textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} \\
+        \hline
+        FR-4.1 & Users shall view calendar in monthly format & High & Complete \\
+        FR-4.2 & Users shall create events & High & Complete \\
+        FR-4.3 & Users shall create multi-day events & Medium & Complete \\
+        FR-4.4 & Events shall have types (Exam, Deadline, etc.) & Medium & Complete \\
+        FR-4.5 & Users shall drag and drop events & Low & Complete \\
+        FR-4.6 & Tasks shall appear on calendar & Medium & Complete \\
+        \hline
+        \end{tabular}
+        \caption{Calendar Management Requirements}
+        \end{table}
+
+        \subsection{FR-5: Notes and Journal}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|p{7cm}|c|c|}
+        \hline
+        \textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} \\
+        \hline
+        FR-5.1 & Users shall create notes & High & Complete \\
+        FR-5.2 & Users shall add images to notes (max 5) & Medium & Complete \\
+        FR-5.3 & Users shall search notes & Medium & Complete \\
+        FR-5.4 & Users shall create one journal entry per day & High & Complete \\
+        FR-5.5 & Users shall select mood for journal entries & Medium & Complete \\
+        \hline
+        \end{tabular}
+        \caption{Notes and Journal Requirements}
+        \end{table}
+
+        \subsection{FR-6: Quiz Generation}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|p{7cm}|c|c|}
+        \hline
+        \textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} \\
+        \hline
+        FR-6.1 & System shall generate MCQs from uploaded documents & High & Complete \\
+        FR-6.2 & Quiz shall have 5 questions & Medium & Complete \\
+        FR-6.3 & Questions shall be fill-in-the-blank format & Medium & Complete \\
+        FR-6.4 & Users shall select file for quiz generation & High & Complete \\
+        FR-6.5 & Default question bank shall be available & Medium & Complete \\
+        \hline
+        \end{tabular}
+        \caption{Quiz Generation Requirements}
+        \end{table}
+
+        \subsection{FR-7: Progress Tracking and Reporting}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|p{7cm}|c|c|}
+        \hline
+        \textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} \\
+        \hline
+        FR-7.1 & System shall track XP points & High & Complete \\
+        FR-7.2 & System shall track daily streaks & High & Complete \\
+        FR-7.3 & System shall calculate productivity score & Medium & Complete \\
+        FR-7.4 & System shall track learning levels (15 total) & High & Complete \\
+        FR-7.5 & Users shall export data as CSV & Medium & Complete \\
+        FR-7.6 & Users shall export data as PDF & Medium & Complete \\
+        \hline
+        \end{tabular}
+        \caption{Progress Tracking and Reporting Requirements}
+        \end{table}
+
+        \section{Non-Functional Requirements}
+
+        \subsection{NFR-1: Performance}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{ID} & \textbf{Requirement} & \textbf{Target} \\
+        \hline
+        NFR-1.1 & Page load time & < 3 seconds \\
+        NFR-1.2 & API response time & < 500ms \\
+        NFR-1.3 & Time to interactive & < 5 seconds \\
+        NFR-1.4 & Database query time & < 100ms \\
+        NFR-1.5 & File upload limit & 50 MB \\
+        \hline
+        \end{tabular}
+        \caption{Performance Requirements}
+        \end{table}
+
+        \subsection{NFR-2: Security}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{ID} & \textbf{Requirement} & \textbf{Implementation} \\
+        \hline
+        NFR-2.1 & Secure authentication & Supabase Auth with JWT \\
+        NFR-2.2 & Password encryption & Handled by Supabase \\
+        NFR-2.3 & HTTPS communication & Enforced in production \\
+        NFR-2.4 & Input validation & Server-side validation \\
+        NFR-2.5 & XSS protection & React's built-in escaping \\
+        NFR-2.6 & SQL injection prevention & Parameterized queries (pg) \\
+        \hline
+        \end{tabular}
+        \caption{Security Requirements}
+        \end{table}
+
+        \subsection{NFR-3: Usability and Maintainability}
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{ID} & \textbf{Requirement} & \textbf{Implementation} \\
+        \hline
+        NFR-3.1 & Intuitive interface & Clean UI with consistent design \\
+        NFR-3.2 & Responsive design & Desktop and tablet support \\
+        NFR-3.3 & Error messages & User-friendly error display \\
+        NFR-3.4 & Modular architecture & Frontend/backend separation \\
+        NFR-3.5 & Code documentation & Inline comments, README files \\
+        NFR-3.6 & Version control & Git with meaningful commits \\
+        \hline
+        \end{tabular}
+        \caption{Usability and Maintainability Requirements}
+        \end{table}

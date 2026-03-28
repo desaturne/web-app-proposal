@@ -1,0 +1,94 @@
+    \chapter{Feasibility Study}
+        \section{Technical Feasibility}
+            The StudyBug web application was technically feasible as all required features were implemented using standard web technologies. The system was developed using:
+
+            \begin{itemize}
+                \item \textbf{Frontend}: React 19 with React Router DOM 7 for client-side routing
+                \item \textbf{Backend}: Node.js with Express.js 4.18 for RESTful API development
+                \item \textbf{Database}: PostgreSQL for persistent data storage
+                \item \textbf{Authentication}: Supabase Auth with JWT tokens for secure user management
+                \item \textbf{File Processing}: pdf.js (pdfjs-dist) for PDF parsing in quiz generation
+            \end{itemize}
+
+            All technologies used are mature, well-documented, and widely adopted in the industry. The responsive design ensures the system works across desktop and tablet devices through any modern web browser.
+
+            \subsection{Technology Assessment}
+            \begin{table}[h]
+            \centering
+            \begin{tabular}{|l|c|c|c|}
+            \hline
+            \textbf{Technology} & \textbf{Maturity} & \textbf{Availability} & \textbf{Assessment} \\
+            \hline
+            React 19 & High & Open Source & Excellent \\
+            Node.js & High & Open Source & Excellent \\
+            Express.js & High & Open Source & Excellent \\
+            PostgreSQL & High & Open Source & Excellent \\
+            Supabase & High & Free Tier & Excellent \\
+            \hline
+            \end{tabular}
+            \caption{Technology Assessment Matrix}
+            \end{table}
+
+        \section{Operational Feasibility}
+           Operational feasibility assessed how well the system works in real conditions and how easily users can adopt it.
+
+            The developed website is operationally feasible because it successfully addresses real student challenges: lack of focus, unstructured schedules, and low motivation. The system provides a simple and practical solution---users can plan tasks, schedule study time, run focus sessions, and track progress within one platform. Since the website is accessible through any browser, users do not need installation, which improves accessibility and adoption.
+
+           \subsection{Focus Timer and Study Session Module}
+                This module successfully supports focused study techniques using the Pomodoro method. Users can start and pause study sessions, take short breaks, and record study time. The distraction-minimized focus view improves usability. Session tracking and task association work reliably in the browser environment.
+
+           \subsection{Study Scheduling and Planner Module}
+               The scheduling module allows users to create daily or weekly study plans and allocate time blocks for tasks. This improves structure and reduces procrastination. The calendar interface presents schedules in a clean format with multi-day event support and drag-and-drop functionality.
+
+            \subsection{Aesthetic UI, Themes, and Personalization}
+                This module focuses on the visual appeal through an immersive virtual study room with interactive hotspots. The aesthetic design improves engagement and increases long-term use by making the study environment more pleasant. The video background and interactive elements support the core idea that studying should feel less stressful.
+
+            \subsection{Quiz Generation Module}
+                The quiz generation module successfully extracts text from uploaded PDF and TXT files, analyzes word frequency, identifies key terms, and generates fill-in-the-blank MCQ questions. This feature adds significant value by enabling self-assessment.
+
+        \section{Economic Feasibility}
+            The project was economically feasible because it was developed using free and open-source tools. The actual costs incurred were minimal:
+
+            \begin{table}[h]
+            \centering
+            \begin{tabular}{|l|c|l|}
+            \hline
+            \textbf{Cost Category} & \textbf{Amount} & \textbf{Notes} \\
+            \hline
+            Development Tools & \$0 & VS Code, Git (Free) \\
+            Frontend Hosting & \$0-5/month & Vercel/Netlify free tier \\
+            Backend Hosting & \$0-7/month & Railway/Render free tier \\
+            Database (Supabase) & \$0/month & Free tier sufficient \\
+            Domain (Optional) & \$10-15/year & Optional custom domain \\
+            \hline
+            \textbf{Total Monthly Cost} & \textbf{\$0-12/month} & Scalable as needed \\
+            \hline
+            \end{tabular}
+            \caption{Economic Feasibility - Cost Analysis}
+            \end{table}
+
+            The project successfully demonstrated that a comprehensive study application can be developed and deployed with minimal financial investment, making it suitable for academic projects and potential future scaling.
+
+        \section{Schedule Feasibility}
+            The StudyBug project was completed within an 8-week development cycle, demonstrating schedule feasibility. The project followed an iterative Agile approach:
+
+            \begin{table}[h]
+            \centering
+            \begin{tabular}{|l|l|c|}
+            \hline
+            \textbf{Phase} & \textbf{Duration} & \textbf{Status} \\
+            \hline
+            Project Setup \& Planning & Week 1-2 & Completed \\
+            Core Backend Development & Week 2-3 & Completed \\
+            Frontend-Backend Integration & Week 3-4 & Completed \\
+            Feature Development & Week 4-6 & Completed \\
+            Advanced Features & Week 6-7 & Completed \\
+            Polish \& Documentation & Week 7-8 & Completed \\
+            \hline
+            \textbf{Total} & \textbf{8 weeks} & \textbf{Completed} \\
+            \hline
+            \end{tabular}
+            \caption{Project Schedule - Actual Timeline}
+            \end{table}
+
+            The modular approach and clear separation of frontend and backend development allowed the team to work efficiently and meet all deadlines without schedule overruns.

@@ -1,0 +1,261 @@
+    \addcontentsline{toc}{section}{Appendix}
+	\large
+		\begingroup
+			\let\clearpage\relax
+			\chapter*{Appendix}
+		\endgroup
+    \normalsize
+		\appendix
+
+\subsection*{Appendix A: Additional System Screenshots}
+
+The following figures provide additional screenshots of the StudyBug interface beyond those presented in Chapter 8.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/imagin.png}
+    \caption{StudyBug Dashboard Showing XP, Streaks, and Learning Progress}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/studyr.png}
+    \caption{Virtual Study Room with Interactive Hotspots}
+\end{figure}
+
+\pagebreak
+
+\subsection*{Appendix B: Database Table Schemas}
+
+The following tables define the structure of each database table used in StudyBug. All tables include a \texttt{user\_id} foreign key for data isolation.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Column} & \textbf{Type} & \textbf{Description} \\
+\hline
+id & UUID (PK) & Unique user identifier (from Supabase Auth) \\
+email & VARCHAR & User email address \\
+display\_name & VARCHAR & User display name \\
+xp & INTEGER & Accumulated experience points \\
+streak & INTEGER & Current daily streak count \\
+last\_active & TIMESTAMP & Last login/activity timestamp \\
+productivity\_score & FLOAT & Calculated productivity metric \\
+created\_at & TIMESTAMP & Account creation timestamp \\
+\hline
+\end{tabular}
+\caption{users Table Schema}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Column} & \textbf{Type} & \textbf{Description} \\
+\hline
+task\_id & SERIAL (PK) & Unique task identifier \\
+user\_id & UUID (FK) & Reference to user \\
+title & VARCHAR & Task title \\
+description & TEXT & Task description \\
+priority & VARCHAR & Priority level (Low/Medium/High) \\
+status & VARCHAR & Task status (pending/completed) \\
+target\_date & DATE & Planned completion date \\
+estimated\_pomodoros & INTEGER & Estimated Pomodoro sessions \\
+completed\_pomodoros & INTEGER & Actual Pomodoro sessions completed \\
+progress\_percent & INTEGER & Completion percentage (0--100) \\
+created\_at & TIMESTAMP & Task creation timestamp \\
+\hline
+\end{tabular}
+\caption{tasks Table Schema}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Column} & \textbf{Type} & \textbf{Description} \\
+\hline
+session\_id & SERIAL (PK) & Unique session identifier \\
+user\_id & UUID (FK) & Reference to user \\
+task\_id & INTEGER (FK) & Associated task \\
+duration\_minutes & INTEGER & Planned session duration \\
+actual\_duration & INTEGER & Actual time spent (seconds) \\
+status & VARCHAR & Session state (IN\_PROGRESS/COMPLETED/CANCELLED) \\
+started\_at & TIMESTAMP & Session start time \\
+ended\_at & TIMESTAMP & Session end time \\
+\hline
+\end{tabular}
+\caption{focus\_sessions Table Schema}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Column} & \textbf{Type} & \textbf{Description} \\
+\hline
+note\_id & SERIAL (PK) & Unique note identifier \\
+user\_id & UUID (FK) & Reference to user \\
+title & VARCHAR & Note title \\
+content & TEXT & Note content \\
+images & TEXT[] & Array of Base64-encoded image data \\
+color & VARCHAR & Pastel color code for UI display \\
+created\_at & TIMESTAMP & Note creation timestamp \\
+updated\_at & TIMESTAMP & Last update timestamp \\
+\hline
+\end{tabular}
+\caption{notes Table Schema}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Column} & \textbf{Type} & \textbf{Description} \\
+\hline
+entry\_id & SERIAL (PK) & Unique journal entry identifier \\
+user\_id & UUID (FK) & Reference to user \\
+entry\_date & DATE & Date of the journal entry (unique per user) \\
+content & TEXT & Journal text content \\
+mood & VARCHAR & Selected mood (Happy/Sad/Tired/Excited, etc.) \\
+word\_count & INTEGER & Auto-calculated word count \\
+created\_at & TIMESTAMP & Entry creation timestamp \\
+\hline
+\end{tabular}
+\caption{journal\_entries Table Schema}
+\end{table}
+
+\pagebreak
+
+\subsection*{Appendix C: Complete API Endpoint Reference}
+
+The following table lists all API endpoints implemented in the StudyBug backend. All routes (except authentication) require a valid JWT token in the \texttt{Authorization} header.
+
+\begin{longtable}{|l|l|p{6cm}|}
+\hline
+\textbf{Method} & \textbf{Endpoint} & \textbf{Description} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Method} & \textbf{Endpoint} & \textbf{Description} \\
+\hline
+\endhead
+\multicolumn{3}{r}{\textit{Continued on next page}} \\
+\endfoot
+\hline
+\endlastfoot
+POST & /api/auth/verify & Verify Supabase JWT token \\
+GET & /api/auth/profile & Get authenticated user profile \\
+PUT & /api/auth/profile & Update user display name \\
+\hline
+GET & /api/tasks & Get all tasks for user \\
+POST & /api/tasks & Create a new task \\
+PUT & /api/tasks/:id & Update task details \\
+PATCH & /api/tasks/:id/complete & Mark task as complete \\
+DELETE & /api/tasks/:id & Soft-delete task to trash \\
+\hline
+GET & /api/notes & Get all notes for user \\
+POST & /api/notes & Create a new note \\
+PUT & /api/notes/:id & Update note content \\
+DELETE & /api/notes/:id & Soft-delete note to trash \\
+\hline
+GET & /api/journal & Get all journal entries for user \\
+POST & /api/journal & Create a journal entry \\
+PUT & /api/journal/:id & Update journal entry \\
+DELETE & /api/journal/:id & Delete journal entry \\
+\hline
+GET & /api/calendar & Get all calendar events \\
+POST & /api/calendar & Create a calendar event \\
+PUT & /api/calendar/:id & Update calendar event \\
+DELETE & /api/calendar/:id & Delete calendar event \\
+\hline
+GET & /api/files & Get all uploaded files \\
+POST & /api/files/upload & Upload a PDF or TXT file \\
+DELETE & /api/files/:id & Delete a file \\
+\hline
+GET & /api/focus-sessions & Get focus session history \\
+POST & /api/focus-sessions & Start a new focus session \\
+PUT & /api/focus-sessions/:id & Update session status \\
+GET & /api/focus-sessions/timeline & Get timeline analytics data \\
+\hline
+GET & /api/progress & Get user learning progress \\
+PUT & /api/progress/xp & Add XP points \\
+GET & /api/progress/levels & Get all learning levels \\
+PUT & /api/progress/streak & Update daily streak \\
+GET & /api/progress/productivity & Get productivity score \\
+\hline
+GET & /api/quiz/default & Get default quiz questions \\
+POST & /api/quiz/generate & Generate MCQs from uploaded file \\
+POST & /api/quiz/submit & Submit quiz answers and award XP \\
+\hline
+GET & /api/trash & Get all soft-deleted items \\
+POST & /api/trash/restore/:id & Restore item from trash \\
+DELETE & /api/trash/:id & Permanently delete item \\
+DELETE & /api/trash/empty & Empty all trash items \\
+\hline
+\end{longtable}
+
+\pagebreak
+
+\subsection*{Appendix D: Gamification System — Level Structure}
+
+StudyBug implements a three-phase learning progression system with 15 levels to maintain long-term user engagement.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|l|c|}
+\hline
+\textbf{Phase} & \textbf{Level} & \textbf{Level Name} & \textbf{XP Required} \\
+\hline
+Phase 1: Foundations \& Basics & 1  & Curious Beginner   & 0 \\
+                               & 2  & Eager Learner      & 100 \\
+                               & 3  & Knowledge Seeker   & 250 \\
+                               & 4  & Focused Student    & 450 \\
+                               & 5  & Steady Scholar     & 700 \\
+\hline
+Phase 2: Building Momentum     & 6  & Rising Academic    & 1000 \\
+                               & 7  & Determined Thinker & 1400 \\
+                               & 8  & Skilled Analyst    & 1900 \\
+                               & 9  & Sharp Mind         & 2500 \\
+                               & 10 & Deep Diver         & 3200 \\
+\hline
+Phase 3: Peak Mastery          & 11 & Expert Learner     & 4000 \\
+                               & 12 & Master Scholar     & 5000 \\
+                               & 13 & Grand Thinker      & 6500 \\
+                               & 14 & Elite Academic     & 8500 \\
+                               & 15 & Study Legend       & 11000 \\
+\hline
+\end{tabular}
+\caption{StudyBug Gamification Level Structure}
+\end{table}
+
+XP is awarded through the following actions:
+\begin{itemize}
+    \item Completing a quiz: \textbf{+50 XP} per quiz
+    \item Completing a task: \textbf{+20 XP} per task
+    \item Completing a focus session: \textbf{+10 XP} per session
+    \item Daily login streak bonus: \textbf{+5 XP} per day
+\end{itemize}
+
+\subsection*{Appendix E: Team Contributions}
+
+The following table summarizes the primary responsibilities of each team member during the development of StudyBug.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|p{7cm}|}
+\hline
+\textbf{Member} & \textbf{Roll No.} & \textbf{Primary Contributions} \\
+\hline
+Anjana Silinchhe Shrestha & KCE080BCT004 & Frontend UI development, StudyRoom interactive hotspots, Calendar module, overall UI/UX design \\
+\hline
+Pradipta Joshi & KCE080BCT021 & Backend API development, authentication integration, database schema design \\
+\hline
+Prasant Rai & KCE080BCT024 & Pomodoro timer implementation, focus session tracking, export functionality (CSV/PDF) \\
+\hline
+Sushma Shrestha & KCE080BCT043 & Quiz generation system, notes and journal modules, gamification (XP, streaks, levels) \\
+\hline
+\end{tabular}
+\caption{Team Member Contributions}
+\end{table}
