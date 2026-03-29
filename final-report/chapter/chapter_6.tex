@@ -1,22 +1,7 @@
 \chapter{System Design and Architecture}
 
-    \section{High-Level Architecture}
-    The StudyBug application follows a three-tier client-server architecture consisting of:
-    \begin{itemize}
-        \item \textbf{Presentation Layer}: React-based Single Page Application (SPA)
-        \item \textbf{Application Layer}: Node.js/Express.js RESTful API server
-        \item \textbf{Data Layer}: PostgreSQL database with Supabase authentication
-    \end{itemize}
-
     \section{Use Case Diagram}
-    The Use Case Diagram shows the interactions between the student (primary user) and the system functionalities.
-        \begin{figure}[htbp]
-        \centering
-            \includegraphics[width=0.5\textwidth]{img/finalusecase.png}
-            \caption{Use Case Diagram of StudyBug}
-        \end{figure}
-
-    The primary actor (Student) can perform the following use cases:
+    The Use Case Diagram shows the interactions between the student (primary user) and the system functionalities. The primary actor (Student) can perform the following use cases:
     \begin{itemize}
         \item Register and Login
         \item Manage Tasks (Create, Update, Delete, Complete)
@@ -27,40 +12,47 @@
         \item View Progress and Analytics
         \item Export Reports
     \end{itemize}
-
-    \section{Context Diagram}
-    The Context Diagram shows the top level view of the StudyBug system and its interaction with external entities.
-    \begin{figure}[htbp]
-            \centering
-                \includegraphics[width=1.0\textwidth]{img/contextdiagram.png}
-                \caption{Context Diagram of StudyBug}
-            \end{figure}
-
-    \section{Data Flow Diagram}
-    The Data Flow Diagram shows the flow of data between the subsystems of StudyBug.
-            \begin{figure}[htbp]
-            \centering
-                \includegraphics[width=1.0\textwidth]{img/dataflow.png}
-                \caption{Data Flow Diagram of StudyBug}
-            \end{figure}
-
-    \section{Sequence Diagram}
-    The Sequence Diagram illustrates the flow of a typical focus session workflow.
-            \begin{figure}[htbp]
-            \centering
-                \includegraphics[width=1.0\textwidth]{img/sequence-diagram}
-                \caption{Sequence Diagram - Focus Session Workflow}
-            \end{figure}
-
-    \section{System Block Diagram}
     \begin{figure}[htbp]
         \centering
-        \includegraphics[width=0.9\textwidth]{img/System-Block-Diagram.png}
+        \includegraphics[width=0.92\textwidth]{img/finalusecase.png}
+        \caption{Use Case Diagram of StudyBug}
+    \end{figure}
+
+    \clearpage
+    \section{Context Diagram}
+    The Context Diagram shows the top level view of the StudyBug system and its interaction with external entities.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1.0\textwidth]{img/contextdiagram.png}
+        \caption{Context Diagram of StudyBug}
+    \end{figure}
+
+    \clearpage
+    \section{Sequence Diagram}
+    The Sequence Diagram illustrates the flow of a typical focus session workflow.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1.0\textwidth]{img/sequence-diagram}
+        \caption{Sequence Diagram - Focus Session Workflow}
+    \end{figure}
+
+    \clearpage
+    \section{Data Flow Diagram}
+    The Data Flow Diagram shows the flow of data between the subsystems of StudyBug.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.92\textwidth]{img/dataflow.png}
+        \caption{Data Flow Diagram of StudyBug}
+    \end{figure}
+
+    \section{System Block Diagram}
+    The system block diagram illustrates the architecture of StudyBug showing how different modules interact.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.82\textwidth]{img/System-Block-Diagram.png}
         \caption{System Block Diagram of StudyBug}
         \label{fig:System Block Diagram}
     \end{figure}
-
-    The system block diagram illustrates the architecture of StudyBug showing how different modules interact:
 
     \subsection{Frontend Interface Module}
     The frontend interface module handles user interaction and visual presentation. Developed using React 19, it provides interfaces for:
@@ -94,6 +86,7 @@
         \item progress, trash, schedules
     \end{itemize}
 
+    \clearpage
     \section{Entity Relationship Analysis}
     The Entity-Relationship analysis defines the data architecture of StudyBug.
 
@@ -117,9 +110,10 @@
     \end{itemize}
 
     \subsection{Relationships and Cardinality}
-    \begin{table}[H]
+    \begin{table}[htbp]
     \centering
-    \begin{tabular}{|p{3cm}|p{3.2cm}|c|p{5cm}|}
+    \small
+    \begin{tabular}{|p{3.8cm}|p{3.8cm}|c|p{4.5cm}|}
     \hline
     \textbf{Entity A} & \textbf{Entity B} & \textbf{Cardinality} & \textbf{Description} \\ \hline
     USER & TASK & $1:N$ & One user can manage multiple tasks \\ \hline
@@ -135,36 +129,46 @@
     \caption{Entity Relationship and Cardinality Table}
     \end{table}
 
-    \begin{figure}[htbp]
+    \begin{figure}[H]
         \centering
         \includegraphics[width=0.9\textwidth]{img/erd2.jpeg}
         \caption{ER Diagram of StudyBug}
     \end{figure}
 
-    \begin{figure}[htbp]
+    \begin{figure}[H]
         \centering
         \includegraphics[width=0.9\textwidth]{img/erd1.png}
         \caption{Detailed Entity Relationship Diagram}
     \end{figure}
 
+    \clearpage
     \section{API Architecture}
     The backend exposes RESTful API endpoints organized by resource:
 
     \begin{table}[H]
     \centering
-    \begin{tabular}{|p{3.5cm}|p{4cm}|p{5.5cm}|}
+    \begin{tabular}{|p{4cm}|p{5cm}|p{4.5cm}|}
     \hline
     \textbf{Route} & \textbf{Methods} & \textbf{Purpose} \\
     \hline
     /api/auth & POST & Authentication (login, register, logout) \\
+    \hline
     /api/tasks & GET, POST, PUT, DELETE & Task management \\
+    \hline
     /api/notes & GET, POST, PUT, DELETE & Notes management \\
+    \hline
     /api/journal & GET, POST, PUT, DELETE & Journal entries \\
+    \hline
     /api/calendar & GET, POST, PUT, DELETE & Calendar events \\
+    \hline
     /api/files & GET, POST, DELETE & File management \\
+    \hline
     /api/focus-sessions & GET, POST, PUT & Focus session tracking \\
+    \hline
     /api/progress & GET, PUT & Learning progress \\
+    \hline
     /api/quiz & GET, POST & Quiz generation and results \\
+    \hline
     /api/trash & GET, POST, DELETE & Soft delete management \\
     \hline
     \end{tabular}

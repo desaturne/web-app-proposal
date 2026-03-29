@@ -13,8 +13,8 @@
 \usepackage{booktabs}
 \usepackage{needspace}
 \usepackage{etoolbox}
-\preto{\section}{\needspace{10\baselineskip}}
-\preto{\subsection}{\needspace{8\baselineskip}}
+\preto{\section}{\needspace{4\baselineskip}}
+\preto{\subsection}{\needspace{3\baselineskip}}
 \DeclareUnicodeCharacter{202F}{\,}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 \begin{document}
@@ -31,7 +31,7 @@
     \include{chapter/chapter_9}
     \include{appendix}
     \bibliographystyle{IEEEtran}
-    \nocite{Gikas2013,Compton2018}
+    \nocite{Gikas2013,Compton2018,RamirezRuiz2024}
     \bibliography{ref}
 	\addcontentsline{toc}{section}{Bibliography}
 \end{document}
